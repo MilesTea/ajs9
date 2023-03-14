@@ -74,19 +74,25 @@ test.each([
   expect(new TestClass('test')).toBeInstanceOf(Character);
 });
 
+test('test Character attack setting', () => {
+  const testCharacter = new Bowman('testName');
+  testCharacter.attack = 100;
+  expect(testCharacter.attack).toEqual(100);
+});
+
 test.each([
-  [Magician, 1, 1],
-  [Magician, 2, 0.9],
-  [Magician, 6, 0.5],
-  [Daemon, 1, 1],
-  [Daemon, 2, 0.9],
-  [Daemon, 6, 0.5],
-])('testing %p class damage with %i distance', (TestClass, distance, expectedMultiplier) => {
+  [Magician, 1, 100],
+  [Magician, 2, 90],
+  [Magician, 6, 50],
+  [Daemon, 1, 100],
+  [Daemon, 2, 90],
+  [Daemon, 6, 50],
+])('testing %p class damage with %i distance', (TestClass, distance, expectedDamage) => {
   const testCharacter = new TestClass('testName');
   testCharacter.attack = 100;
-  const baseDamage = testCharacter.attack;
-  const damage = testCharacter.getAttack(distance);
-  expect(damage).toEqual(baseDamage * expectedMultiplier, 5);
+  testCharacter.distance = distance;
+  const damage = testCharacter.attack;
+  expect(damage).toEqual(expectedDamage, 5);
 });
 
 test.each([
@@ -100,6 +106,13 @@ test.each([
   const testCharacter = new TestClass('testName');
   testCharacter.attack = 100;
   testCharacter.stoned = true;
-  const damage = testCharacter.getAttack(distance);
+  testCharacter.distance = distance;
+  const damage = testCharacter.attack;
   expect(damage).toEqual(expectedDamage, 5);
+});
+
+test('testing stoned condition', () => {
+  const testCharacter = new Magician('testName');
+  testCharacter.stoned = true;
+  expect(testCharacter.stoned).toBe(true);
 });

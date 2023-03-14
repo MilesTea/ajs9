@@ -3,16 +3,28 @@ import Character from './Character';
 class CharacterMagic extends Character {
   constructor(name, type) {
     super(name, type);
-    this.stoned = false;
+    this.stonedCondition = false;
+    this.attackDistance = 1;
   }
 
-  getAttack(range) {
-    const distance = Math.max(range, 1);
-    let newAttack = this.attack * (Math.max((100 - 10 * (distance - 1)), 0) * 0.01);
-    if (this.stoned) {
-      newAttack -= (Math.log2(distance) * 5);
+  get stoned() {
+    return this.stonedCondition;
+  }
+
+  set stoned(state) {
+    this.stonedCondition = state;
+  }
+
+  get attack() {
+    let newAttack = this._attack * (Math.max((100 - 10 * (this.distance - 1)), 0) * 0.01);
+    if (this.stonedCondition) {
+      newAttack -= (Math.log2(this.distance) * 5);
     }
     return Math.round(newAttack);
+  }
+
+  set attack(number) {
+    this._attack = number;
   }
 }
 

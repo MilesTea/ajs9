@@ -10,13 +10,4 @@ function getBuffer() {
   })(data);
 }
 
-function bufferToString(buffer) {
-  const bufferView = new Uint16Array(buffer);
-  let str = '';
-  for (let i = 0; i < bufferView.length; i += 1) {
-    str += String.fromCharCode(bufferView[i]);
-  }
-  return str;
-}
-
-export { getBuffer, bufferToString };
+export default getBuffer;

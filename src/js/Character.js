@@ -14,7 +14,7 @@ class Character {
     this.type = type;
     this.health = 100;
     this.level = 1;
-    this.attack = undefined;
+    this._attack = undefined;
     this.defence = undefined;
   }
 
@@ -23,7 +23,7 @@ class Character {
       throw new Error('Персонаж мертв');
     }
     this.level += 1;
-    this.attack = Math.round(this.attack * 1.2);
+    this._attack = Math.round(this._attack * 1.2);
     this.defence = Math.round((100 - this.defence) * 0.2) + this.defence;
     this.health = 100;
   }
@@ -32,6 +32,14 @@ class Character {
     const damage = Math.round(points * (1 - this.defence / 100));
     this.health -= damage;
     if (this.health < 0) { this.health = 0; }
+  }
+
+  get attack() {
+    return this._attack;
+  }
+
+  set attack(number) {
+    this._attack = number;
   }
 }
 
