@@ -28,5 +28,4 @@ class CharacterMagic extends Character {
   }
 }
 
-export default
-CharacterMagic;
+export default CharacterMagic;

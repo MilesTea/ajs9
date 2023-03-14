@@ -8,5 +8,4 @@ class Undead extends Character {
   }
 }
 
-export default
-Undead;
+export default Undead;

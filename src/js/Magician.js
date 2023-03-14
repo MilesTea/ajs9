@@ -8,5 +8,4 @@ class Magician extends CharacterMagic {
   }
 }
 
-export default
-Magician;
+export default Magician;

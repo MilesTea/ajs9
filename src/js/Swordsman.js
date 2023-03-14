@@ -7,5 +7,4 @@ class Swordsman extends Character {
     this.defence = 10;
   }
 }
-export default
-Swordsman;
+export default Swordsman;

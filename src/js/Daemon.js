@@ -8,5 +8,4 @@ class Daemon extends CharacterMagic {
   }
 }
 
-export default
-Daemon;
+export default Daemon;

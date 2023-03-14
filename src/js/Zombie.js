@@ -7,5 +7,4 @@ class Zombie extends Character {
     this.defence = 10;
   }
 }
-export default
-Zombie;
+export default Zombie;
